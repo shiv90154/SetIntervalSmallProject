@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Downloading Progress</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .progress {
+      width: 100%;
+      height: 20px;
+      background: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: rgb(255, 255, 255);
+     
+    }
+
+    .percent {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>Downloading...</h3>
+    <div class="progress">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="percent" id="percent">0%</div>
+  </div>
+
+  <script>
+    let count =0;
+    let progress=document.querySelector(".progress-bar");
+let percentage=document.querySelector("#percent");
+setInterval(function () {
+    if(count<100){
+        count++
+        progress.style.width=`${count}%`
+        percentage.textContent=`${count}%`
+
+    }
+    else{
+        document.querySelector("h3").textContent="Downloading Complete"
+    }
+    
+},1000/100)
+  </script>
+</body>
+</html>
